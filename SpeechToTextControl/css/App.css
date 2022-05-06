@@ -1,0 +1,9 @@
+.NUSA_focusedElement
+{
+    background: #FFFFFF;
+    color: #363636;
+}
+
+#NUSAI_CommandBar {
+    display: none !important;
+}
