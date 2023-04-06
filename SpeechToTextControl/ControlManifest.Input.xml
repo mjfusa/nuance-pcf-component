@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="wehealth" constructor="SpeechToTextCtrl" version="1.69.0" display-name-key="SpeechToTextCtrl" description-key="SpeechToTextCtrl description" control-type="standard">
+  <control namespace="wehealth" constructor="SpeechToTextCtrl" version="1.70.4" display-name-key="SpeechToTextCtrl" description-key="SpeechToTextCtrl description" control-type="standard">
     <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
     If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
     Example1:
@@ -11,7 +11,6 @@
       <external-service-usage enabled="false">
       </external-service-usage>
     -->
-
     <external-service-usage enabled="true">
       <domain>speechanywhere.nuancehdp.com</domain>
     </external-service-usage>
@@ -19,7 +18,6 @@
     <type-group name="inputtypes">
       <type>SingleLine.TextArea</type>
     </type-group>
-
     <property name="TransformedText" display-name-key="TransformedText" description-key="Output from Nuance SDk speech to text" of-type-group="inputtypes" usage="bound" required="true" />
     <property name="NUSA_userId" display-name-key="NUSA_userId" description-key="NUSA_userId" of-type="SingleLine.TextArea" usage="input" required="true" />
     <property name="NUSA_applicationName" display-name-key="NUSA_applicationName" description-key="NUSA_applicationName" of-type="SingleLine.TextArea" usage="input" required="true" />
@@ -35,17 +33,14 @@
     <property name="buttonTextColorPressedHEX" display-name-key="buttonTextColorPressedHEX" description-key="buttonTextColorPressedHEX" of-type="SingleLine.TextArea" usage="input" required="false" default-value="#ffffff" />
     <property name="iconColorRecordHEX" display-name-key="iconColorRecordHEX" description-key="iconColorRecordHEX" of-type="SingleLine.TextArea" usage="input" required="false" default-value="#ffffff" />
     <property name="iconColorStopHEX" display-name-key="iconColorStopHEX" description-key="iconColorStopHEX" of-type="SingleLine.TextArea" usage="input" required="false" default-value="#ffffff" />
-    
     <property name="isRecording" display-name-key="Set this to true/false in order to start recording" description-key="Show only api text" usage="input" of-type="Enum" required="false">
       <value name="True" display-name-key="Enable" description-key="Enable">1</value>
       <value name="False" display-name-key="Disable" description-key="Disable" default="true">0</value>
     </property>
-
     <property name="showRecordingButton" display-name-key="Set this to true/false in order to start recording" description-key="Show only api text" usage="input" of-type="Enum" required="false">
       <value name="True" display-name-key="Enable" description-key="Enable" default="true">1</value>
       <value name="False" display-name-key="Disable" description-key="Disable">0</value>
     </property>
-
     <!-- 
       Property node's of-type attribute can be of-type-group attribute. 
       Example:
@@ -58,7 +53,7 @@
       <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
     -->
     <resources>
-      <code path="index.ts" order="1"/>
+      <code path="index.ts" order="1" />
       <css path="css/App.css" order="1" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <resx path="strings/SpeechToTextControl.1033.resx" version="1.0.0" />

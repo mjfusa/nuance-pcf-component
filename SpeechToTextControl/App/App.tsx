@@ -13,10 +13,10 @@ export interface IAppProps {
     pcfHeight?: string;
     pcfWidth?: string;
     NUSA_userId: string | null;
+    NUSA_language?: string | null;
     NUSA_applicationName?: string | null;
     NUSA_Guids?: string | null;
     NUSA_service?: string | null;
-    NUSA_language?: string | null;
     cookies: Cookies;
     transformedText?: string | null;
     stackTokens: IStackTokens;
@@ -39,6 +39,7 @@ export interface IAppState {
     isNusaLibLoading: boolean;
     supportedLanguages: string[];
     NUSA_userId: string | null;
+    NUSA_language?: string | null;
 }
 
 export class App extends React.Component<IAppProps, IAppState>{
@@ -53,6 +54,7 @@ export class App extends React.Component<IAppProps, IAppState>{
         this.state = {
             transformedText: "",
             NUSA_userId: "",
+            NUSA_language: "",
             isRecording: false,
             isNusaLibLoaded: false,
             isNusaLibLoading: false,
@@ -65,8 +67,8 @@ export class App extends React.Component<IAppProps, IAppState>{
                 "nl",
                 "en",
                 "fi",
-                "fr",
-                "de",
+                "fr-FR",
+                "de-DE",
                 "hu",
                 "it",
                 "no",
@@ -138,10 +140,16 @@ export class App extends React.Component<IAppProps, IAppState>{
         if (prevProps && prevProps.NUSA_language != this.props.NUSA_language && this.state.supportedLanguages.find((lang) => lang.toLowerCase() == this.props.NUSA_language?.toLowerCase())) {
             //@ts-ignore 
             if (typeof NUSA_closeVuiForm != undefined && typeof NUSA_initializeVuiForm != undefined) {
-                //@ts-ignore
+                if (prevProps.NUSA_language != this.props.NUSA_language) {
+                    this.setState({ NUSA_language: this.props.NUSA_language });
+                }
+               //@ts-ignore
                 NUSA_closeVuiForm();
                 //@ts-ignore
-                NUSA_language = this.props.NUSA_language;
+                if (NUSA_language != this.props.NUSA_language) {
+                    //@ts-ignore
+                    NUSA_language = this.props.NUSA_language;
+                }
                 //@ts-ignore
                 NUSA_initializeVuiForm();
             }
@@ -199,7 +207,7 @@ export class App extends React.Component<IAppProps, IAppState>{
             document.cookie='NUSA_Guids=${this.props.NUSA_Guids}'; 
             NUSA_service = '${this.props.NUSA_service}';
             NUSA_enableAll = false;
-            NUSA_language = "${this.props.NUSA_language}";
+            NUSA_language = '${this.props.NUSA_language}';
         }`; //se till att NUSA_userId inte är ""
         script.id = "nuance-config";
         document.getElementsByTagName("head")[0].appendChild(script);
